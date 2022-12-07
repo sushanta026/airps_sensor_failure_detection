@@ -82,3 +82,35 @@ main--> is your branch name
 ```
 MONGO_DB_URL = "mongodb+srv://susant:susant123@cluster0.8beoc.mongodb.net/?retryWrites=true&w=majority"
 ```
+
+## github - connect to your repository
+```
+git init    # initialise git to your project
+git remote add origin <githublink>
+cd .git/
+cd logs/
+ls
+cat HEAD/
+cd remotes/
+ls
+cd origin
+ls
+cat main
+cd.. # back to main dir
+```
+## git push command
+```
+git add .              # add for all files to staging area
+git add <file_name>    # add a specific file 
+git status             # To check the staging files 
+git commit -m "comment about your commit"
+git push origin main   # push files to origin main
+git push origin main -f  #  push files forcefully to origin main 
+
+```
+### check which repository connected 
+```
+git remote -ve
+git remote remote origin
+git log    # history of commits
+```

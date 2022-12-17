@@ -8,8 +8,6 @@ import numpy as np
 import os,sys
 
 
-
-
 class DataIngestion:
     def __init__(self, data_ingestion_config:config_entity.DataIngestionConfig):
         try:
@@ -26,9 +24,10 @@ class DataIngestion:
                 collection_name=self.data_ingestion_config.collection_name)
             
             logging.info(f"save data in feature store")
-            # save data in feature store
+            # replace na value with NAN
             df.replace(to_replace='na', value=np.NAN, inplace=True)
-
+            
+            # save data in feature store
             logging.info(f"create feature store folder if not available")
             #create feature store folder if not available
             feature_store_dir = os.path.dirname(self.data_ingestion_config.feature_store_file_path)
@@ -39,7 +38,7 @@ class DataIngestion:
             #save df to feature store folder
             df.to_csv(path_or_buf=self.data_ingestion_config.feature_store_file_path, index=False, header=True)
 
-            logging.info(f"split the dataset inti train and test set")
+            logging.info(f"split the dataset into train and test set")
             #split the dataset inti train and test set
             train_df,test_df = train_test_split(df, test_size=self.data_ingestion_config.test_size)
 
@@ -48,19 +47,19 @@ class DataIngestion:
             dataset_dir = os.path.dirname(self.data_ingestion_config.train_file_path)
             os.makedirs(dataset_dir, exist_ok=True)
 
-            logging.info(f"save df to feature store folder")
+            logging.info(f"save train_df and test_df to dataset folder")
             #save df to feature store folder
             train_df.to_csv(path_or_buf=self.data_ingestion_config.train_file_path, index=False, header=True)
             test_df.to_csv(path_or_buf=self.data_ingestion_config.test_file_path, index=False, header=True)
 
             logging.info(f"prepare artifact")
-            #prepare artifact
-
+            #prepare data_ingestion output/ artifact
             data_ingestion_artifact = artifact_entity.DataIngestionArtifact(
-                feature_store_file_path=self.data_ingestion_config.feature_store_file_path,
-                train_file_path=self.data_ingestion_config.train_file_path,
-                test_file_path=self.data_ingestion_config.test_file_path)
-        
+                    feature_store_file_path=self.data_ingestion_config.feature_store_file_path,
+                    train_file_path=self.data_ingestion_config.train_file_path, 
+                    test_file_path=self.data_ingestion_config.test_file_path)
+            logging.info(f"Data ingestion artifact: {data_ingestion_artifact}")
+            return data_ingestion_artifact   
                    
         except Exception as e:
             raise SensorException(e,sys)

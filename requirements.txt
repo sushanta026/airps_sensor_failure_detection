@@ -16,4 +16,5 @@ xgboost==1.6.2
 numpy
 pandas
 scikit-learn
+PyYAML
 -e .

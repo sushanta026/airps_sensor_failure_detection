@@ -40,15 +40,25 @@ def convert_columns_float(df:pd.DataFrame, exclude_columns:list)->pd.DataFrame:
     except Exception as e:
         raise SensorException(e)
 
-def save_object(file_path:str, obj:object)->None:
+'''def save_object(file_path:str, obj:object)->None:
     try:
-        logging.info(f"Entered the save object method of MainUtils class")
+        logging.info(f"Entered the save object method of Utils ")
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, "wb") as file_obj:
             dill.dump(obj,file_obj)
-        logging.info(f"Exited the save_object method of MainUtils class")
+        logging.info(f"Exited the save_object method of Utils ")
     except Exception as e:
-        raise SensorException(e,sys)
+        raise SensorException(e,sys) from e'''
+        
+def save_object(file_path: str, obj: object) -> None:
+    try:
+        logging.info("Entered the save_object method of utils")
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "wb") as file_obj:
+            dill.dump(obj, file_obj)
+        logging.info("Exited the save_object method of utils")
+    except Exception as e:
+        raise SensorException(e, sys) from e
 
 def load_object(file_path:str)->object:
     try:

@@ -19,6 +19,7 @@ class DataTransformation:
     def __init__(self, data_transformation_config:config_entity.DataTransformationConfig,
                         data_ingestion_artifact:artifact_entity.DataIngestionArtifact):
         try:
+            logging.info(f"{'>>'*20} Data Transformation {'<<'*20}")
             self.data_transformation_config = data_transformation_config
             self.data_ingestion_artifact = data_ingestion_artifact
         except Exception as e:
@@ -66,7 +67,7 @@ class DataTransformation:
             input_feature_train_arr = transformation_pipleine.transform(input_feature_train_df)
             input_feature_test_arr = transformation_pipleine.transform(input_feature_test_df)
 
-            smt = SMOTETomek(sampling_strategy="minority")
+            smt = SMOTETomek(random_state=42)
             logging.info(f"Before resampling in training set input: {input_feature_train_arr.shape} Target: {target_feature_train_arr.shape}")
             input_feature_train_arr, target_feature_train_arr = smt.fit_resample(input_feature_train_arr, target_feature_train_arr )
             logging.info(f"After resampling in training set input: {input_feature_train_arr.shape} Target: {target_feature_train_arr.shape}")

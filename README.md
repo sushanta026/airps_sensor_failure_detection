@@ -79,7 +79,7 @@ main--> is your branch name
 
 ### Create .env file for urls
 ```
-MONGO_DB_URL = "mongodb+srv://susant:susant123@cluster0.8beoc.mongodb.net/?retryWrites=true&w=majority"
+MONGO_DB_URL = ""
 ```
 
 ## github - connect to your repository

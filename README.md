@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/avnyadav/sensor-fault-detection/main/aps_
 This is changes made in neuro lab
 
 
-Git commands
+## Git commands
 
 If you are starting a project and you want to use git in your project
 ```

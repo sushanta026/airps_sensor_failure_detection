@@ -54,7 +54,7 @@ Number of Attributes: 171
 ### References :
 ```
 Dataset imported from  UCI ML Repository
-https://archive.ics.uci.edu/dataset/421/aps+failure+at+scania+trucks
+
 ```
 
 ### Step 1 - Install the requirements

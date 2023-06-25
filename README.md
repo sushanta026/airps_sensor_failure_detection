@@ -1,7 +1,8 @@
 ### Sensor fault detection of a vehicle that uses compressed air to provide pressure to the break
 
 ### Problem Statement
-```The Air Pressure System (APS) is a critical component of a heavy-duty vehicle
+```
+The Air Pressure System (APS) is a critical component of a heavy-duty vehicle
 that uses compressed air to force a piston to provide pressure to the brake pads,
 slowing the vehicle down. The benefits of using an APS instead of a hydraulic system
 are the easy availability and long-term sustainability of natural air.
@@ -12,7 +13,8 @@ that the failure was caused by a certain component of the APS, while the
 ```
 
 ### Attribute Information:
- ```  The attribute names of the data have been anonymized for 
+ ```
+The attribute names of the data have been anonymized for 
    proprietary reasons. It consists of both single numerical 
    counters and histograms consisting of bins with different 
    conditions. Typically the histograms have open-ended 
